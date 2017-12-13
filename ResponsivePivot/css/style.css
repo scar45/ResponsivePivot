@@ -426,9 +426,9 @@ pre, tt {
 white-space: pre-wrap;
 background: #404552;
 color: #ccc;
-padding: 12px 24px;
-border-radius: 8px;
-border: 4px solid #5294E2;
+padding: 2px 5px;
+border-radius: 7px;
+/*border: 3px solid #B5341E;*/
 box-shadow: inset 0 0 20px rgba(0,0,0,0.45);
   font-family: saxmono, mono, monospace;
 }
