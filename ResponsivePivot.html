@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<!-- based on a Pen by Devilish Alchemist @ http://codepen.io/devilishalchemist/pen/LERvpM -->
+<head>
+  <meta charset="UTF-8">
+  <title>[% title %]</title>
+
+  <link rel="stylesheet" href="[% resource('css/normalize.min.css') %]">
+  <link rel="stylesheet" href="[% resource('css/whhg.css') %]">
+  <link rel="stylesheet" href="[% resource('css/fonts.css') %]">
+  <link rel="stylesheet" href="[% resource('css/style.css') %]">
+
+</head>
+
+<body>
+  <div class="page">
+
+    <span id="view-toc" class="tooltip">&laquo; view index</span>
+    <span id="view-content" class="tooltip">return to content &raquo;</span>
+    <span id="view-next" class="tooltip">next page &raquo;</span>
+    <span id="view-prev" class="tooltip">&laquo; previous page</span>
+
+    <span class="menu_toggle">
+      <i class="menu_open icon icon-th-list"></i>
+      <i class="menu_close icon icon-import"></i>
+    </span>
+
+    <div id="navigation">
+      [% index() %]
+      <span class="zimversion">
+        <small>built with</small><br><strong>[% generator.name %]</strong>
+        <br>
+        --
+        <br>
+        <a href="https://github.com/scar45/ResponsivePivot">template<br> on Github<br><i class="icon icon-github"></i></a>
+      </span>
+    </div>
+
+    <main class="content">
+      <div class="content_inner">
+        <article>
+          <header>
+            [% IF navigation.prev %]
+            <a id="navPrev" href='[% uri(navigation.prev) %]'><span><i class="icon icon-chevron-left"></i></span></a>
+            [% ELSE %]
+            <span class='insen'><i class="icon icon-chevron-left"></i></span>
+            [% END %]
+
+            [% IF navigation.home %]
+            <a id="navHome" href='[% uri(navigation.home) %]'><span><i class="icon icon-homealt"></i></span></a>
+            [% END %]
+
+            [% IF navigation.next %]
+            <a id="navNext" href='[% uri(navigation.next) %]'><span><i class="icon icon-chevron-right"></i></span></a>
+            [% ELSE %]
+            <span class='insen'><i class="icon icon-chevron-right"></i></span>
+            [% END %]
+          </header>
+
+          <section>
+            <!--[% FOR page IN pages %]-->
+            <div class="page-title">
+              <h1><i class="icon icon-bookmarkalt"></i> [% page.title %] <a name='[% anchor(page) %]'></a></h1>
+            </div>
+            <div class="fade fade-top"></div>
+            <!--[% END %]-->
+            <div class="page-body">
+              [% page.body %]
+            </div>
+            <div class="fade fade-bottom"></div>
+          </section>
+
+          <footer>
+              <a href="#" class="scrollToTop" title="Back to top"><i class="icon icon-uploadalt"></i></a>
+            <!--[% FOR link IN page.backlinks %]-->
+              [% IF loop.first %]
+              <b>Backlinks:</b>
+              [% END %]
+              <a class="page" href='[% uri(link) %]'>[% link.name %]</a>
+              [% IF loop.last %]<br /><br />[% END %]
+            <!--[% END %]-->
+          </footer>
+        </article>
+      </div>
+    </main>
+  </div>
+
+  <script src="[% resource('js/jquery.v2.1.3.min.js') %]"></script>
+  <script src="[% resource('js/index.js') %]"></script>
+
+</body>
+</html>
